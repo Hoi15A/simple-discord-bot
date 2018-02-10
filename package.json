@@ -1,0 +1,15 @@
+{
+  "name": "discord-bot",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "author": "Austin Albrecht",
+  "license": "AGPL-3.0",
+  "dependencies": {
+    "discord.js": "^11.3.0",
+    "dotenv": "^5.0.0"
+  }
+}
