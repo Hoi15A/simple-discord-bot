@@ -1,33 +1,55 @@
 require('dotenv').config()
-const Discord = require('discord.js')
-const bigText = require('./bigText.js')
 
+const fs = require('fs')
+
+const Discord = require('discord.js')
 const client = new Discord.Client()
+
+var commands = []
 
 client.on('ready', () => {
   console.log(`Logged in as ${client.user.tag}!`)
+  fs.readdirSync('./commands').forEach(file => {
+    commands.push({
+      'info': require('./commands/' + file).getInfo(process.env.PREFIX),
+      'command': require('./commands/' + file).command
+    })
+  })
+  console.log(commands)
 })
 
 client.on('message', msg => {
-  if (msg.content === process.env.PREFIX + 'help') {
-    msg.channel.send('https://media.giphy.com/media/l4Ki2obCyAQS5WhFe/giphy.gif')
+  var message = msg.content
+  if (message.substring(0, process.env.PREFIX.length) !== process.env.PREFIX) {
+    return
   }
+  message = message.replace(process.env.PREFIX, '')
+  var cmd = message.split(/ (.+)/)[0]
+  var params = message.split(/ (.+)/)[1]
 
-  if (msg.content === process.env.PREFIX + 'ping') {
-    msg.reply('Pong!')
-  }
+  commands.map(command => {
+    if (cmd === command.info.name) {
+      command.command(msg, params)
+    }
+  })
 
-  if (msg.content === process.env.PREFIX + 'anything but ping') {
-    msg.reply('no u')
-  }
+  if (cmd === 'help' || cmd === 'man') {
+    if (params === 'help' || params === 'man') {
+      msg.reply('you cute little idiot OwO\nYou aleady know how to use ' + cmd + '!')
+      return
+    } else if (cmd === 'commands') {
+      // TODO: msg.channel.send()
+    }
 
-  var splitContent = msg.content.split(' ')
-
-  if (splitContent[0] === process.env.PREFIX + 'thing') {
-    splitContent.splice(0, 1)
-    var text = splitContent.join(' ')
-    msg.channel.send(bigText.replaceText(text))
-    msg.delete()
+    for (var j = 0; j < commands.length; j++) {
+      if (commands[j].info.name === params) {
+        if (typeof commands[j].info.man === 'string') {
+          msg.channel.send(commands[j].info.man)
+          return
+        }
+      }
+    }
+    msg.channel.send('It seems that there is no help available for: `' + params + '`\n')
   }
 })
 
