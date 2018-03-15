@@ -25,7 +25,12 @@ module.exports = {
         console.log(err)
         return
       }
-      msg.channel.send('```\n' + data + '```')
+      var figText = data.replace(/^(?:[\t ]*(?:\r?\n|\r))+/gm, '')
+      if (figText.length < 1990) {
+        msg.channel.send('```\n' + figText + '```')
+      } else {
+        msg.channel.send('Sorry, that message is too long to be sent to Discord **[' + figText.length + '/2000]**')
+      }
     })
   }
 }
