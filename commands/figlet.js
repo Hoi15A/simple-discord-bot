@@ -29,7 +29,7 @@ module.exports = {
       if (figText.length < 1990) {
         msg.channel.send('```\n' + figText + '```')
       } else {
-        msg.channel.send('Sorry, that message is too long to be sent to Discord **[' + figText.length + '/2000]**')
+        msg.channel.send('Sorry, that message is too long to be sent. **[' + figText.length + '/2000]**')
       }
     })
   }

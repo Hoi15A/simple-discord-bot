@@ -37,8 +37,10 @@ client.on('message', msg => {
     if (params === 'help' || params === 'man') {
       msg.reply('you cute little idiot OwO\nYou aleady know how to use ' + cmd + '!')
       return
-    } else if (cmd === 'commands') {
-      // TODO: msg.channel.send()
+    } else if (params === undefined) {
+      msg.channel.send('The following commands are available:\n```\n' + getCommandNames().join(', ') +
+      '```\nUse them with: `' + process.env.PREFIX + '<command>`\nAnd use `' + process.env.PREFIX + 'help` to get more information on a specific command.')
+      return
     }
 
     for (var j = 0; j < commands.length; j++) {
@@ -50,7 +52,17 @@ client.on('message', msg => {
       }
     }
     msg.channel.send('It seems that there is no help available for: `' + params + '`\n')
+  } else if (cmd === 'commands') {
+    msg.channel.send('The following commands are available:\n```\n' + getCommandNames().join(', ') + '```')
   }
 })
+
+function getCommandNames () {
+  var names = []
+  commands.map(c => {
+    names.push(c.info.name)
+  })
+  return names
+}
 
 client.login(process.env.DISCORD_TOKEN)
