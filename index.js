@@ -1,4 +1,7 @@
 require('dotenv').config()
+if (process.env.REPO_BASE_URL === '' || process.env.REPO_BASE_URL === undefined) {
+  process.env.REPO_BASE_URL = 'https://github.com/Hoi15A/simple-discord-bot'
+}
 
 const fs = require('fs')
 
@@ -15,7 +18,14 @@ client.on('ready', () => {
       'command': require('./commands/' + file).command
     })
   })
-  console.log(commands)
+
+  var names = []
+  commands.map(c => {
+    names.push(c.info.name)
+  })
+  console.log('━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n')
+  console.log('Following commands have been enabled: ')
+  console.log(names.join(', '), '\n')
 })
 
 client.on('message', msg => {
@@ -29,7 +39,7 @@ client.on('message', msg => {
 
   commands.map(command => {
     if (cmd === command.info.name) {
-      command.command(msg, params)
+      command.command(msg, params, process.env)
     }
   })
 
@@ -39,14 +49,16 @@ client.on('message', msg => {
       return
     } else if (params === undefined) {
       msg.channel.send('The following commands are available:\n```\n' + getCommandNames().join(', ') +
-      '```\nUse them with: `' + process.env.PREFIX + '<command>`\nAnd use `' + process.env.PREFIX + 'help` to get more information on a specific command.')
+      '```\nUse them with: `' + process.env.PREFIX + '<command>`\nAnd use `' + process.env.PREFIX + 'help <command>` to get more information on a specific command.')
       return
     }
 
     for (var j = 0; j < commands.length; j++) {
       if (commands[j].info.name === params) {
         if (typeof commands[j].info.man === 'string') {
-          msg.channel.send(commands[j].info.man)
+          msg.channel.send(commands[j].info.man, function (err) {
+            console.log(err)
+          })
           return
         }
       }

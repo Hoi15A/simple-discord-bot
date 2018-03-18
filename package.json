@@ -11,7 +11,7 @@
   "dependencies": {
     "discord.js": "11.3.0",
     "dotenv": "5.0.0",
-    "figlet": "^1.2.0",
-    "yargs-parser": "^9.0.2"
+    "figlet": "1.2.0",
+    "yargs-parser": "9.0.2"
   }
 }
