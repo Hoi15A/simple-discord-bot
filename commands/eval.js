@@ -20,7 +20,11 @@ module.exports = {
       out = out.substring(0, 1900)
     }
 
-    msg.channel.send('In:\n```zsh\n' + params + '\n```\nOut:\n```\n' + out + '\n```')
+    msg.channel.send('In:\n```zsh\n' + escapeQuotes(params) + '\n```\nOut:\n```\n' + escapeQuotes(out) + '\n```')
     msg.delete()
   }
+}
+
+function escapeQuotes (text) {
+  return text.replace(/`/g, '\\`')
 }
