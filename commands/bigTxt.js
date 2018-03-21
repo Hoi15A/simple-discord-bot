@@ -9,7 +9,7 @@ module.exports = {
     return info
   },
   command: function (msg, params) {
-    const exp = /[^a-z .]/gi
+    const exp = /[^a-z 0-9.]/gi
     params = params.replace(exp, '').toLowerCase()
     var chars = params.split('')
     var mapped = chars.map(char => {
