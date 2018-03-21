@@ -1,8 +1,9 @@
 module.exports = {
-  getInfo: function (prefix) {
+  getInfo: function () {
     var info = {
       'name': 'ping',
-      'man': '`' + prefix + 'ping`\nReplies with `Pong!`'
+      'permissionLevel': 'everyone',
+      'man': '`' + process.env.PREFIX + 'ping`\nReplies with `Pong!`'
     }
     return info
   },

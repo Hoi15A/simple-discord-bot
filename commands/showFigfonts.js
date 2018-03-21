@@ -1,8 +1,9 @@
 module.exports = {
-  getInfo: function (prefix) {
+  getInfo: function () {
     var info = {
       'name': 'figfonts',
-      'man': '`' + prefix + 'figfonts`\nLists figlet fonts'
+      'permissionLevel': 'everyone',
+      'man': '`' + process.env.PREFIX + 'figfonts`\nLists figlet fonts'
     }
     return info
   },

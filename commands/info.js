@@ -1,14 +1,15 @@
 const childProcess = require('child_process')
 
 module.exports = {
-  getInfo: function (prefix) {
+  getInfo: function () {
     var info = {
       'name': 'info',
-      'man': '`' + prefix + 'info`\nProvides a bit of information on the bot'
+      'permissionLevel': 'everyone',
+      'man': '`' + process.env.PREFIX + 'info`\nProvides a bit of information on the bot'
     }
     return info
   },
-  command: function (msg, params, env) {
+  command: function (msg, params) {
     var uptimeSeconds = msg.client.uptime / 1000
     var days = Math.floor(uptimeSeconds / 86400)
     uptimeSeconds %= 86400
@@ -28,7 +29,7 @@ module.exports = {
         'embed': {
           'title': 'Info',
           'description': '__General bot information__',
-          'url': env.REPO_BASE_URL,
+          'url': process.env.REPO_BASE_URL,
           'color': 1929661,
           'thumbnail': {
             'url': 'https://git-scm.com/images/logos/downloads/Git-Icon-1788C.png'
@@ -40,7 +41,7 @@ module.exports = {
             },
             {
               'name': 'Current Commit',
-              'value': '[' + stdout + '](' + env.REPO_BASE_URL + '/commit/' + stdout + ')'
+              'value': '[' + stdout + '](' + process.env.REPO_BASE_URL + '/commit/' + stdout + ')'
             }
           ]
         }

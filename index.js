@@ -4,22 +4,23 @@ if (process.env.REPO_BASE_URL === '' || process.env.REPO_BASE_URL === undefined)
 }
 
 const fs = require('fs')
-
 const Discord = require('discord.js')
 const client = new Discord.Client()
 
+const permissions = require('./lib/permissions.js')
+
 var commands = []
+var names = []
 
 client.on('ready', () => {
   console.log(`Logged in as ${client.user.tag}!`)
   fs.readdirSync('./commands').forEach(file => {
     commands.push({
-      'info': require('./commands/' + file).getInfo(process.env.PREFIX),
+      'info': require('./commands/' + file).getInfo(),
       'command': require('./commands/' + file).command
     })
   })
 
-  var names = []
   commands.map(c => {
     names.push(c.info.name)
   })
@@ -39,7 +40,19 @@ client.on('message', msg => {
 
   commands.map(command => {
     if (cmd === command.info.name) {
-      command.command(msg, params, process.env)
+      if (permissions.check(msg.member, command.info.permissionLevel)) {
+        command.command(msg, params)
+      } else {
+        msg.channel.send({
+          'embed': {
+            'color': 0x700000,
+            'author': {
+              'name': 'I\'m sorry ' + msg.member.user.username + ', I\'m afraid I can\'t do that',
+              'icon_url': 'https://upload.wikimedia.org/wikipedia/commons/thumb/f/f6/HAL9000.svg/220px-HAL9000.svg.png'
+            }
+          }
+        })
+      }
     }
   })
 
@@ -48,7 +61,7 @@ client.on('message', msg => {
       msg.reply('you cute little idiot OwO\nYou aleady know how to use ' + cmd + '!')
       return
     } else if (params === undefined) {
-      msg.channel.send('The following commands are available:\n```\n' + getCommandNames().join(', ') +
+      msg.channel.send('The following commands are available:\n```\n' + names.join(', ') +
       '```\nUse them with: `' + process.env.PREFIX + '<command>`\nAnd use `' + process.env.PREFIX + 'help <command>` to get more information on a specific command.')
       return
     }
@@ -65,16 +78,8 @@ client.on('message', msg => {
     }
     msg.channel.send('It seems that there is no help available for: `' + params + '`\n')
   } else if (cmd === 'commands') {
-    msg.channel.send('The following commands are available:\n```\n' + getCommandNames().join(', ') + '```')
+    msg.channel.send('The following commands are available:\n```\n' + names.join(', ') + '```')
   }
 })
-
-function getCommandNames () {
-  var names = []
-  commands.map(c => {
-    names.push(c.info.name)
-  })
-  return names
-}
 
 client.login(process.env.DISCORD_TOKEN)

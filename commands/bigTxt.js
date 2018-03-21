@@ -3,7 +3,8 @@ const alphabet = require('../lib/alphabetMap.json')
 module.exports = {
   getInfo: function () {
     var info = {
-      'name': 'bigtxt'
+      'name': 'bigtxt',
+      'permissionLevel': 'everyone'
     }
     return info
   },

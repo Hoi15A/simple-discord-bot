@@ -1,10 +1,11 @@
 const figlet = require('figlet')
 
 module.exports = {
-  getInfo: function (prefix) {
+  getInfo: function () {
     var info = {
       'name': 'figlet',
-      'man': '`' + prefix + 'figlet --font="<optional>" <text>`\nDisplays text with figlet (optionally with a specific font)\nFind a list of fonts with: `' + prefix + 'figfonts`'
+      'permissionLevel': 'everyone',
+      'man': '`' + process.env.PREFIX + 'figlet --font="<optional>" <text>`\nDisplays text with figlet (optionally with a specific font)\nFind a list of fonts with: `' + process.env.PREFIX + 'figfonts`'
     }
     return info
   },
