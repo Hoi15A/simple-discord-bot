@@ -13,7 +13,7 @@ module.exports = {
     try {
       out = childProcess.execSync(params).toString()
     } catch (e) {
-      out = e
+      out = e.toString()
     }
 
     if (out.length > 1900) {
