@@ -12,6 +12,7 @@
     "discord.js": "11.3.0",
     "dotenv": "5.0.0",
     "figlet": "1.2.0",
+    "request": "2.85.0",
     "yargs-parser": "9.0.2"
   }
 }
