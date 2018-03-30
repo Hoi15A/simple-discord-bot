@@ -10,18 +10,21 @@ module.exports = {
   },
   command: function (msg, params) {
     var out = ''
-    try {
-      out = childProcess.execSync(params).toString()
-    } catch (e) {
-      out = e.toString()
-    }
+    childProcess.exec(params, function (err, resp) {
+      if (err) {
+        out = err
+      } else {
+        out = resp
+      }
 
-    if (out.length > 1900) {
-      out = out.substring(0, 1900)
-    }
+      if (out.length > 1800) {
+        out = out.substring(0, 1800)
+        out += '\n[Rest of string cut off due to Discord\'s message limit]'
+      }
 
-    msg.channel.send('In:\n```zsh\n' + escapeQuotes(params) + '\n```\nOut:\n```\n' + escapeQuotes(out) + '\n```')
-    msg.delete()
+      msg.channel.send('In:\n```zsh\n' + escapeQuotes(params) + '\n```\nOut:\n```\n' + escapeQuotes(out) + '\n```')
+      msg.delete()
+    })
   }
 }
 
