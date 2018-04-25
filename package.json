@@ -14,5 +14,9 @@
     "figlet": "1.2.0",
     "request": "2.85.0",
     "yargs-parser": "9.0.2"
+  },
+  "repository" : {
+    "type" : "git",
+    "url" : "https://github.com/Hoi15A/simple-discord-bot.git"
   }
 }

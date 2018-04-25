@@ -12,7 +12,7 @@ module.exports = {
     var out = ''
     childProcess.exec(params, function (err, resp) {
       if (err) {
-        out = err
+        out = err.toString()
       } else {
         out = resp
       }
