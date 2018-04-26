@@ -13,4 +13,16 @@ BOT_ADMIN_ROLES=<role Id's>
 If you enter multiple values, separate them with `;`
 
 
-Then just run `npm install` and start with `npm start`
+## Running the bot
+### Simple
+Just run `npm install` and start with `npm start`
+
+### Using docker
+Requirements:
+- Docker
+- Docker-compose
+
+Then simply run `npm run docker-build` to create the image (can be used to recreate after updates)
+
+`npm run docker-down` to stop the bot<br>
+`npm run docker-up` to start it again

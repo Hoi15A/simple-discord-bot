@@ -4,7 +4,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js"
+    "start": "node index.js",
+    "docker-build": "docker-compose build && docker-compose down && docker-compose up -d",
+    "docker-up": "docker-compose up -d",
+    "docker-down": "docker-compose down"
   },
   "author": "Austin Albrecht",
   "license": "AGPL-3.0",
