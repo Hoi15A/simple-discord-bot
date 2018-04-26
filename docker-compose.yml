@@ -4,4 +4,3 @@ services:
     build: .
     command: npm start
     image: hoi15a/discord-bot
-    container_name: discord-bot
