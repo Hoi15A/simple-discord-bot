@@ -1,30 +1,43 @@
 const clocks = require('../lib/clocks.json')
+const send = require('../lib/messageSender.js')
+
+const info = {
+  'name': 'ping',
+  'permissionLevel': 'everyone',
+  'colour': null,
+  'man': '`' + process.env.PREFIX + 'ping`\nReplies with `Pong!`'
+}
 
 module.exports = {
   getInfo: function () {
-    var info = {
-      'name': 'ping',
-      'permissionLevel': 'everyone',
-      'man': '`' + process.env.PREFIX + 'ping`\nReplies with `Pong!`'
-    }
     return info
   },
   command: function (msg, params) {
     const timeThen = Date.now()
-    msg.channel.send('_Measuring..._').then(m => {
+    send.standardResponse(msg, '_Measuring..._', info).then(m => {
       const latency = Date.now() - timeThen
-      m.edit('Pong! ' + clocks[0] + ' ' + latency + 'ms')
-      updateClocks(m, latency, 0)
+      var embed = m.embeds[0]
+      embed = removeCircularJson(embed)
+      embed.description = 'Pong! ' + clocks[Math.floor(Math.random() * clocks.length)] + ' ' + latency + 'ms'
+      embed.author.icon_url = msg.author.avatarURL
+      const date = new Date()
+      embed.timestamp = date.toISOString()
+      m.edit({'embed': embed})
     })
   }
 }
 
-function updateClocks (m, latency, counter) {
-  m.edit('Pong! ' + clocks[counter] + ' ' + latency + 'ms')
-  counter++
-  if (counter < clocks.length) {
-    setTimeout(() => {
-      updateClocks(m, latency, counter)
-    }, 2000)
-  }
+function removeCircularJson (obj) {
+  var cache = []
+  return JSON.parse(JSON.stringify(obj, function (key, value) {
+    if (typeof value === 'object' && value !== null) {
+      if (cache.indexOf(value) !== -1) {
+        // Circular reference found, discard key
+        return
+      }
+      // Store value in our collection
+      cache.push(value)
+    }
+    return value
+  }))
 }
