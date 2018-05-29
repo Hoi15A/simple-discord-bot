@@ -2,7 +2,7 @@ const send = require('../lib/messageSender.js')
 
 const info = {
   'name': 'rename',
-  'permissionLevel': 'owner',
+  'permissionLevel': 'admin',
   'colour': 'RANDOM',
   'man': 'no'
 }
