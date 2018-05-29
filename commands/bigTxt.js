@@ -10,6 +10,9 @@ module.exports = {
   },
   command: function (msg, params) {
     const exp = /[^a-z 0-9.]/gi
+    if (typeof params !== 'string') {
+      return
+    }
     params = params.replace(exp, '').toLowerCase()
     var chars = params.split('')
     var mapped = chars.map(char => {
