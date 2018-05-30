@@ -16,7 +16,7 @@ module.exports = {
     msg.guild.roles.map(role => {
       allRoles.push(role.name + ': ' + role.id)
     })
-    allRoles.sort()
+    allRoles.sort((a, b) => a.localeCompare(b))
     send.standardResponse(msg, allRoles.join('\n'), info)
   }
 }
