@@ -4,3 +4,9 @@ services:
     build: .
     command: npm start
     image: hoi15a/discord-bot
+    deploy:
+      restart_policy:
+        condition: any
+        delay: 30s
+        max_attempts: 5
+        window: 10s
