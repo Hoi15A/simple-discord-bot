@@ -18,6 +18,10 @@ module.exports = {
     }
 
     var amount = params.split(' ', 1)
+    if (isNaN(parseInt(amount))) {
+      send.standardResponse(msg, 'You need to send a number as the first parameter', info)
+      return
+    }
     var newName = params.replace(amount, '').trim()
     var keys = []
     if (amount > 10) {
@@ -56,7 +60,7 @@ module.exports = {
         if (peopleRenamed.length === 1) {
           messagetxt = 'Renamed **' + peopleRenamed[0] + '** to `' + newName + '`'
         } else {
-          messagetxt = 'Renamed ' + amount + ' people to `' + newName + '`:\n' + peopleRenamed.join('\n')
+          messagetxt = 'Renamed ' + parseInt(amount) + ' people to `' + newName + '`:\n' + peopleRenamed.join('\n')
         }
 
         send.standardResponse(msg, messagetxt, info)
@@ -72,9 +76,9 @@ module.exports = {
             response += '\n\nAnd **' + failCount + '** renames failed.'
           }
         } else {
-          response = 'Renamed ' + amount + ' people to `' + newName + '`:\n' + renamedMembers.join('\n')
+          response = 'Renamed ' + parseInt(amount) + ' people to `' + newName + '`:\n' + renamedMembers.join('\n')
           if (failCount > 0) {
-            response += '\n\nAnd **' + failCount + '** renames failed.'
+            response += '\n\nAnd **' + failCount + '** rename(s) failed.'
           }
         }
         send.standardResponse(msg, response, info)
