@@ -12,6 +12,11 @@ module.exports = {
     return info
   },
   command: function (msg, params) {
+    if (!msg.guild.me.hasPermission('MANAGE_NICKNAMES')) {
+      send.standardResponse(msg, 'This bot is missing the `Manage Nicknames` permission!', info)
+      return
+    }
+
     var amount = params.split(' ', 1)
     var newName = params.replace(amount, '').trim()
     var keys = []
@@ -28,8 +33,17 @@ module.exports = {
     }
 
     var promises = []
+    var renamedMembers = []
+    var failCount = 0
     keys.map(key => {
-      promises.push(msg.guild.members.get(key).setNickname(newName, 'Rename issued by: ' + msg.author.tag))
+      var p = msg.guild.members.get(key).setNickname(newName, 'Rename issued by: ' + msg.author.tag)
+      p.then(member => {
+        renamedMembers.push(member.user.tag)
+      }).catch(err => {
+        console.error(err)
+        failCount++
+      })
+      promises.push(p)
     })
 
     Promise.all(promises)
@@ -48,10 +62,22 @@ module.exports = {
         send.standardResponse(msg, messagetxt, info)
       })
       .catch(err => {
-        if (err.code === 0) {
-          send.standardResponse(msg, 'This command requires the `Manage Nicknames` permission to function.\nIf you wish to use this command please add that permission to the bot.', info)
+        console.error(err)
+        var response = ''
+        if (renamedMembers.length === 0) {
+          response = 'Nobody was renamed.\nMake sure this bot actually can rename people for this command to work.\n_(For example this bot may have tried to rename people higher up in the hierarchy)_'
+        } else if (renamedMembers.length === 1) {
+          response = 'Renamed **' + renamedMembers[0] + '** to `' + newName + '`'
+          if (failCount > 0) {
+            response += '\n\nAnd **' + failCount + '** renames failed.'
+          }
+        } else {
+          response = 'Renamed ' + amount + ' people to `' + newName + '`:\n' + renamedMembers.join('\n')
+          if (failCount > 0) {
+            response += '\n\nAnd **' + failCount + '** renames failed.'
+          }
         }
-        console.log(err)
+        send.standardResponse(msg, response, info)
       })
   }
 }
