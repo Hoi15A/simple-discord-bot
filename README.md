@@ -7,6 +7,7 @@ Create a `.env` file and set the following values:
 DISCORD_TOKEN=
 PREFIX=
 REPO_BASE_URL=https://github.com/Hoi15A/simple-discord-bot
+EMBED_COLOUR=<hex colour code>
 BOT_OWNERS=<user Id's>
 BOT_ADMIN_ROLES=<role Id's>
 ```
