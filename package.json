@@ -12,14 +12,16 @@
   "author": "Austin Albrecht",
   "license": "AGPL-3.0",
   "dependencies": {
+    "cheerio": "^1.0.0-rc.2",
     "discord.js": "11.3.0",
     "dotenv": "5.0.0",
     "figlet": "1.2.0",
+    "pokemon": "1.2.3",
     "request": "2.85.0",
     "yargs-parser": "9.0.2"
   },
-  "repository" : {
-    "type" : "git",
-    "url" : "https://github.com/Hoi15A/simple-discord-bot.git"
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Hoi15A/simple-discord-bot.git"
   }
 }
