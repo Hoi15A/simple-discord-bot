@@ -1,4 +1,4 @@
-FROM node:9.11.1-alpine
+FROM node:10.6.0-alpine
 
 # Create app directory
 RUN mkdir -p /usr/src/app
@@ -8,7 +8,17 @@ WORKDIR /usr/src/app
 COPY . /usr/src/app
 RUN npm install
 
-RUN apk update && apk upgrade && apk add git && apk add cairo
+RUN apk update && apk upgrade
 
+RUN apk add --no-cache \
+        git \
+        build-base \
+        g++ \
+        cairo-dev \
+        jpeg-dev \
+        pango-dev \
+        freetype-dev \
+        giflib-dev \
+        libc6-compat
 
 CMD [ "npm", "start" ]
