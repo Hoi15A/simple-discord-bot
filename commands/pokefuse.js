@@ -1,13 +1,22 @@
 const send = require('../lib/messageSender.js')
+const fs = require('fs')
+const path = require('path')
+
 const pokemon = require('pokemon')
 const cheerio = require('cheerio')
 const request = require('request')
+const trimCanvas = require('trim-canvas')
+const { createCanvas, loadImage } = require('canvas')
+
+const backgroundSize = [256, 144]
+const circleSize = [126, 32]
+const backdrops = require('../lib/backdrops.json')
 
 const info = {
   'name': 'pkfuse',
-  'permissionLevel': 'everyone',
+  'permissionLevel': 'owner',
   'colour': null,
-  'man': 'Fuses 2 Pokémon\n`' + process.env.PREFIX + 'pkfuse <name/id> <name/id> <inputLang>`\n' + '`' + process.env.PREFIX + 'pkfuse random`\n' + '\n\n__**Input:**__\nNames or ids of two of the first 151 Pokémon and optionally an input language.\nYou can also enter just `random` to get a random fusion'
+  'man': 'Fuses 2 Pokémon\n`' + process.env.PREFIX + 'pkfuse <name/id> <name/id> <inputLang>`\n' + '`' + process.env.PREFIX + 'pkfuse random`\n' + '\n\n__**Input:**__\nNames or ids of two of the first 151 Pokémon and optionally an input language.\nYou can also just enter `random` to get a random fusion'
 }
 
 module.exports = {
@@ -72,8 +81,8 @@ module.exports = {
         return
       }
     } else {
-      pk1 = Math.round(Math.random() * 151)
-      pk2 = Math.round(Math.random() * 151)
+      pk1 = Math.round(Math.random() * 150) + 1
+      pk2 = Math.round(Math.random() * 150) + 1
     }
 
     var imageUrl = 'http://images.alexonsager.net/pokemon/fused/' + pk1 + '/' + pk1 + '.' + pk2 + '.png'
@@ -86,7 +95,69 @@ module.exports = {
       }
       var $ = cheerio.load(body)
       var caption = '**' + pokemon.getName(pk1) + '** [' + pk1 + '] + **' + pokemon.getName(pk2) + '** [' + pk2 + '] = **' + $('#pk_name').text() + '**'
-      send.sendImage(msg, info, imageUrl, caption)
+
+      const canvas = createCanvas(backgroundSize[0], backgroundSize[1])
+      const ctx = canvas.getContext('2d')
+      ctx.fillStyle = '#FF0000'
+      ctx.fillRect(0, 0, backgroundSize[0], backgroundSize[1])
+
+      var fusePath = path.dirname(require.main.filename) + '/tmp/' + $('#pk_name').text() + '.png'
+      var resultPath = path.dirname(require.main.filename) + '/tmp/' + $('#pk_name').text() + '-result.png'
+      var resultFilename = $('#pk_name').text() + '-result.png'
+
+      request(imageUrl).pipe(fs.createWriteStream(fusePath)).on('close', () => {
+        loadImage(fusePath).then((fusion) => {
+          loadImage('./assets/battleBGs.png').then((battlebg) => {
+            var backdrop = getRandomBackdropCoords()
+            ctx.drawImage(
+              battlebg,
+              backdrop.bg.x1, backdrop.bg.y1, // source xy1
+              backgroundSize[0], backgroundSize[1], // source xy1
+              0, 0, // destination xy1
+              backgroundSize[0], backgroundSize[1] // destination xy2
+            )
+
+            ctx.drawImage(
+              battlebg,
+              backdrop.circle.x1, backdrop.circle.y1, // source xy1
+              circleSize[0], circleSize[1], // source xy1
+              backgroundSize[0] / 2 - circleSize[0] / 2, backgroundSize[1] / 2 + backgroundSize[1] / 5, // destination xy1
+              circleSize[0], circleSize[1] // destination xy2
+            )
+
+            const fuseCanvas = createCanvas(240, 240)
+            const fusectx = fuseCanvas.getContext('2d')
+
+            fusectx.drawImage(fusion, 0, 0)
+            trimCanvas.default(fuseCanvas)
+            ctx.drawImage(
+              fuseCanvas,
+              backgroundSize[0] / 2 - fuseCanvas.width / 2.2 / 2, backgroundSize[1] - fuseCanvas.height / 2.2 - 22,
+              fuseCanvas.width / 2.2, fuseCanvas.height / 2.2
+            )
+
+            const out = fs.createWriteStream(resultPath)
+            const stream = canvas.createPNGStream()
+            stream.pipe(out)
+            out.on('finish', () => {
+              send.sendImage(msg, info, resultPath, caption, true, resultFilename).then(resp => {
+                fs.unlink(fusePath, (err) => {
+                  if (err) {
+                    console.error(err)
+                  }
+                  // console.log(fusePath, 'was deleted')
+                })
+                fs.unlink(resultPath, (err) => {
+                  if (err) {
+                    console.error(err)
+                  }
+                  // console.log(resultPath, 'was deleted')
+                })
+              })
+            })
+          })
+        })
+      })
     })
   }
 }
@@ -94,4 +165,34 @@ module.exports = {
 function formatPokemonName (string) {
   string = string.toLowerCase()
   return string.charAt(0).toUpperCase() + string.slice(1)
+}
+
+function getRandomBackdropCoords () {
+  var backdrop = backdrops[Math.floor(Math.random() * backdrops.length)]
+  var times = ['day', 'noon', 'night']
+  var time = times[Math.floor(Math.random() * times.length)]
+  // console.log(backdrop.location, time)
+  var backgrounds = backdrop.backgrounds
+  var circles = backdrop.circles
+
+  var bg = {'x1': null, 'y1': null}
+  var circle = {'x1': null, 'y1': null}
+
+  for (var i = 0; i < backgrounds.length; i++) {
+    if (backgrounds[i].time === time) {
+      bg.x1 = backgrounds[i].coords[0]
+      bg.y1 = backgrounds[i].coords[1]
+      break
+    }
+  }
+
+  for (var j = 0; j < circles.length; j++) {
+    if (circles[j].time === time) {
+      circle.x1 = circles[j].coords[0]
+      circle.y1 = circles[j].coords[1]
+      break
+    }
+  }
+
+  return {'bg': bg, 'circle': circle}
 }

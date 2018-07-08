@@ -1,7 +1,7 @@
 {
   "name": "discord-bot",
   "version": "1.0.0",
-  "description": "",
+  "description": "A bot with loads of random functions",
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
@@ -12,12 +12,14 @@
   "author": "Austin Albrecht",
   "license": "AGPL-3.0",
   "dependencies": {
-    "cheerio": "^1.0.0-rc.2",
+    "canvas": "2.0.0-alpha.12",
+    "cheerio": "1.0.0-rc.2",
     "discord.js": "11.3.0",
     "dotenv": "5.0.0",
     "figlet": "1.2.0",
     "pokemon": "1.2.3",
     "request": "2.85.0",
+    "trim-canvas": "0.1.2",
     "yargs-parser": "9.0.2"
   },
   "repository": {

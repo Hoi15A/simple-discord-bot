@@ -9,6 +9,12 @@ const client = new Discord.Client()
 
 const permissions = require('./lib/permissions.js')
 
+// Create temp directory
+const dir = './tmp'
+if (!fs.existsSync(dir)) {
+  fs.mkdirSync(dir)
+}
+
 var commands = []
 var names = []
 

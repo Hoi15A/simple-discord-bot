@@ -1,0 +1,157 @@
+[
+  {
+    "location": "ocean",
+    "backgrounds": [
+      {
+        "time": "day",
+        "coords": [17, 17]
+      },
+      {
+        "time": "noon",
+        "coords": [286, 16]
+      },
+      {
+        "time": "night",
+        "coords": [554, 17]
+      }
+    ],
+    "circles": [
+      {
+        "time": "day",
+        "coords": [1033, 91]
+      },
+      {
+        "time": "noon",
+        "coords": [1309, 95]
+      },
+      {
+        "time": "night",
+        "coords": [1589, 97]
+      }
+    ]
+  },
+  {
+    "location": "mountain",
+    "backgrounds": [
+      {
+        "time": "day",
+        "coords": [16, 300]
+      },
+      {
+        "time": "noon",
+        "coords": [285, 301]
+      },
+      {
+        "time": "night",
+        "coords": [554, 301]
+      }
+    ],
+    "circles": [
+      {
+        "time": "day",
+        "coords": [1033, 374]
+      },
+      {
+        "time": "noon",
+        "coords": [1305, 375]
+      },
+      {
+        "time": "night",
+        "coords": [1600, 375]
+      }
+    ]
+  },
+  {
+    "location": "grass",
+    "backgrounds": [
+      {
+        "time": "day",
+        "coords": [15, 566]
+      },
+      {
+        "time": "noon",
+        "coords": [284, 567]
+      },
+      {
+        "time": "night",
+        "coords": [555, 567]
+      }
+    ],
+    "circles": [
+      {
+        "time": "day",
+        "coords": [1025, 886]
+      },
+      {
+        "time": "noon",
+        "coords": [1314, 897]
+      },
+      {
+        "time": "night",
+        "coords": [1618, 895]
+      }
+    ]
+  },
+  {
+    "location": "forest",
+    "backgrounds": [
+      {
+        "time": "day",
+        "coords": [19, 839]
+      },
+      {
+        "time": "noon",
+        "coords": [287, 840]
+      },
+      {
+        "time": "night",
+        "coords": [556, 841]
+      }
+    ],
+    "circles": [
+      {
+        "time": "day",
+        "coords": [1025, 886]
+      },
+      {
+        "time": "noon",
+        "coords": [1314, 897]
+      },
+      {
+        "time": "night",
+        "coords": [1618, 895]
+      }
+    ]
+  },
+  {
+    "location": "snow",
+    "backgrounds": [
+      {
+        "time": "day",
+        "coords": [21, 1387]
+      },
+      {
+        "time": "noon",
+        "coords": [294, 1385]
+      },
+      {
+        "time": "night",
+        "coords": [564, 1387]
+      }
+    ],
+    "circles": [
+      {
+        "time": "day",
+        "coords": [1033, 374]
+      },
+      {
+        "time": "noon",
+        "coords": [1305, 375]
+      },
+      {
+        "time": "night",
+        "coords": [1600, 375]
+      }
+    ]
+  }
+]

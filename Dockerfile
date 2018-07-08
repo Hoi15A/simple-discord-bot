@@ -8,7 +8,7 @@ WORKDIR /usr/src/app
 COPY . /usr/src/app
 RUN npm install
 
-RUN apk update && apk upgrade && apk add git
+RUN apk update && apk upgrade && apk add git && apk add cairo
 
 
 CMD [ "npm", "start" ]
