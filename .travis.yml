@@ -1,0 +1,19 @@
+language: node_js
+
+node_js:
+  - "node"
+
+before_install:
+  - npm install -g standard
+
+notifications:
+  webhooks:
+    # Wigglytuff's guild
+    - secure: "e6xPEATV/p7D+sWlCTILAMK3j9YSoXYZZn9sKT4GBCjtvZqGUwB3o5CsP6MabbltxgBjfaIEynXpNHTHK4/34CkBwMdfh9GWupkUkaIIwoq/GB80f0CaSQ4cMSudNquRtDUBBqqTlaREQMZVkmya5rhuHynELSUwK6ZYwXiXSgbdpWNfPKnWoG7pkJoxj3LSGod8vuMwXAD8IYcvyH3bQeSHy9iwZErwmp+hJd6Z6+UfvYwwxxf3MsjZ/frG4oXAYWxXo/KULcmRuco/slZXsxdVraAf86bd4mzasTsniWKA8b/70+gMkTG/JbVJd1Qo8+naJcAWXlmvruisk5uB6Pd2R5qVvl/fgx0x2Fe/YAwjvyxU23arrrQBXTPN/jlpLWL5eUqQXVHuhcXkifgz/pcjXXE+BcsT3W0RQg87IFyvFEcZhk8IbrUXdsf0yfJTGlXbXfi5gcZF4CTMDNT4CYknI9xVoXExWtus1KR3zgmoxKgFOgmRXBBuQ0YAJIvU4laEcZt/vfBY/XvyCupLw3hWKhM9rUM78TQmYUSsfhUWksnzqdLgzu0oY6j9428iQrje7C/QhhGdnIrwsCXw6R7mzs0P71p+DBT51y1zA8MhjvRgXcGsxqF3buy7lZxAZ7FY5VrlnnKbMbZyOtrTirtCK9VGBjtJjy0B+HxRHcY="
+    # Immo's Server
+    - secure: "DkdB0iZYAEq8XQAu9/bm/FGvk50GLF6KAZNvLrbmw3y/gbaaXBuxtXuxo74eSsUa4TCuVdPVD6V49B+yWUwMJjTCi75Ok5OZvfPBjBgKkG6fZt3s+f3nOj//RBEs6WKVSHiIVumdoCPAAoo2cPRH+r8tR088wQ7isprt6wQ59Pmo8VTmua8oRSB3gHR2GbtAQf7MSGTu5EH3whBblPZplnJ+GewVGBullStA1urruXzXGqb8RTXGA57fMeZ2NLtCOKCuPgGAiwfFlbPsoecKyjMV8NQRCIbgqyQI6WMCLRBnUeBFYECEe0nv6gRk8RJlwGjjYHLBufp3jq4tM41gZsnGw/6zA9G7bEomCWQyyQIyOAUN0Iasqm/7OlJOImLiAt3qyalT+QeQ8KQPnD8EWMwm76FzQoVRAUkzhql/JeGCB14yYphSLmLh7depegYOqh4uxxkKhAxtHFqwMgeMp03jHaX+2uIrQHWgTGKvWWnVu1bMdmsp1GauopJHjJKtmLg4Zo06nIiAPH5Pj2mjORTdRM7cVIgoXLg96cjYlxNYQ0jC8FDXb1Mm+VThdXNssPJeDsdPf2ays2G1KFjZXHy7HnSNEHR7dmXBpA8nRUMOc1j2GwVHm1llWTbGjJPjazPjLT4kT0Qw9EYRCirT3qSKYsASnCnkaPA+iWhdis8="
+  on_success: always # default: always
+  on_failure: always # default: always
+  on_start: never   # default: never
+  on_cancel: always # default: always
+  on_error: always # default: always
