@@ -1,4 +1,4 @@
-# Simple Discord Bot
+# Simple Discord Bot [![Build Status](https://travis-ci.org/Hoi15A/simple-discord-bot.svg?branch=master)](https://travis-ci.org/Hoi15A/simple-discord-bot)
 Just a simple bot with some random functions
 
 ## Setup
