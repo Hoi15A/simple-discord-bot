@@ -23,10 +23,16 @@ module.exports = {
       out = out.substring(0, 1800)
       out += '\n[Rest of string cut off due to Discord\'s message limit]'
     }
-
-    msg.channel.send('In:\n```zsh\n' + escapeQuotes(params) + '\n```\nOut:\n```\n' + escapeQuotes(out) + '\n```')
+    
+    msg.channel.send('In:\n```zsh\n' + escapeQuotes(params) + '\n```\nOut:\n```\n' + clean(escapeQuotes(out)) + '\n```')
     msg.delete()
   }
+}
+
+ function clean(text) {
+ return text
+    .replace(/`/g, '`' + String.fromCharCode(8203))
+    .replace(/@/g, '@' + String.fromCharCode(8203));
 }
 
 function escapeQuotes (text) {
