@@ -11,7 +11,7 @@ EMBED_COLOUR=<hex colour code>
 BOT_OWNERS=<user Id's>
 BOT_ADMIN_ROLES=<role Id's>
 ```
-If you enter multiple values, separate them with `;`
+You can enter multiple values for owner and admin roles, separate them with `,`
 
 
 ## Running the bot

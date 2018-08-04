@@ -6,7 +6,7 @@ WORKDIR /usr/src/app
 
 # Copy app and install dependencies
 COPY . /usr/src/app
-RUN npm install
+RUN npm ci
 
 RUN apt update && apt upgrade -y
 
