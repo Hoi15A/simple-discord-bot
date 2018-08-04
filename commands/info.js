@@ -10,7 +10,7 @@ module.exports = {
     return info
   },
   command: function (msg, params) {
-    var dateString = require("pretty-ms")(msg.client.uptime)
+    var dateString = require('pretty-ms')(msg.client.uptime)
 
     childProcess.exec('git rev-parse HEAD', function (err, stdout) {
       if (err) {
