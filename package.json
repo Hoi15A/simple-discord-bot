@@ -19,6 +19,7 @@
     "dotenv": "5.0.0",
     "figlet": "1.2.0",
     "pokemon": "1.2.3",
+    "pretty-ms": "^3.2.0",
     "request": "2.85.0",
     "trim-canvas": "0.1.2",
     "yargs-parser": "9.0.2"
