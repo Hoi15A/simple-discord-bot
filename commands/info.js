@@ -10,14 +10,7 @@ module.exports = {
     return info
   },
   command: function (msg, params) {
-    var uptimeSeconds = msg.client.uptime / 1000
-    var days = Math.floor(uptimeSeconds / 86400)
-    uptimeSeconds %= 86400
-    var hours = Math.floor(uptimeSeconds / 3600)
-    uptimeSeconds %= 3600
-    var minutes = Math.floor(uptimeSeconds / 60)
-    var seconds = Math.floor(uptimeSeconds % 60)
-    var dateString = days + 'd ' + hours + 'h ' + minutes + 'm ' + seconds + 's'
+    var dateString = require('pretty-ms')(msg.client.uptime)
 
     childProcess.exec('git rev-parse HEAD', function (err, stdout) {
       if (err) {
