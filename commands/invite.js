@@ -14,15 +14,15 @@ module.exports = {
         'color': 0xffb6c1,
         'thumbnail': {
           'url': msg.client.user.avatarURL
-          },
+        },
         'description': `You can invite the bot using [this link](https://discordapp.com/oauth2/authorize?client_id=${msg.client.user.id}&scope=bot&permissions=0`,
         'timestamp': new Date().toDateString(),
-            'footer': {
+        'footer': {
           'text': `${msg.author.tag}, today at`,
-          'icon_url': msg.client.user.avatarURL 
-         }
+          'icon_url': msg.client.user.avatarURL
+        }
       }
     }
-    message.channel.send(inviteEmbed)
+    msg.channel.send(inviteEmbed)
   }
 }
