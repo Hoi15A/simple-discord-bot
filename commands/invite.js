@@ -3,7 +3,7 @@ module.exports = {
     var info = {
       'name': 'invite',
       'permissionLevel': 'everyone',
-      'man': '`' + process.env.PREFIX + 'invite`\nDisplays the bot's invite'
+      'man': '`' + process.env.PREFIX + 'invite`\nDisplays the bot\'s invite'
       }
      return info
     },
