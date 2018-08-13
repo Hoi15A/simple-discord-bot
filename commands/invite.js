@@ -16,7 +16,7 @@ module.exports = {
           'url': msg.client.user.avatarURL
         },
         'description': `You can invite the bot using [this link](https://discordapp.com/oauth2/authorize?client_id=${msg.client.user.id}&scope=bot&permissions=0`,
-        'timestamp': new Date().toISOString,
+        'timestamp': new Date().toISOString(),
         'footer': {
           'text': `${msg.author.tag}, today at`,
           'icon_url': msg.client.user.avatarURL
