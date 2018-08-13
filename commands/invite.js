@@ -3,7 +3,7 @@ module.exports = {
     var info = {
       'name': 'invite',
       'permissionLevel': 'everyone',
-      'man': '`' + process.env.PREFIX + 'invite`\nDisplays the bot's invite' + '`'
+      'man': '`' + process.env.PREFIX + 'invite`\nDisplays the bot's invite'
       }
      return info
     },
@@ -15,7 +15,7 @@ module.exports = {
     'thumbnail': {
       'url': message.client.user.avatarURL
       },
-    'description': `You can invite the bot using [this link](https://discordapp.com/oauth2/authorize?client_id=${message.client.user.id}&scope=bot&permissions=0,
+    'description': `You can invite the bot using [this link](https://discordapp.com/oauth2/authorize?client_id=${message.client.user.id}&scope=bot&permissions=0`,
     'timestamp': new Date().toDateString(),
     'footer': {
       'text': `${message.author.tag}, today at`,
