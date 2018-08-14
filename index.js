@@ -5,6 +5,7 @@ if (process.env.REPO_BASE_URL === '' || process.env.REPO_BASE_URL === undefined)
 
 const fs = require('fs')
 const Discord = require('discord.js')
+const childProcess = require('child_process')
 const client = new Discord.Client()
 
 const permissions = require('./lib/permissions.js')
@@ -30,6 +31,18 @@ client.on('ready', () => {
   commands.map(c => {
     names.push(c.info.name)
   })
+
+  childProcess.exec('git rev-parse --short HEAD && git rev-parse HEAD', function (err, stdout) {
+    if (err) {
+      console.log('Unable to fetch commit hash...')
+      console.error(err)
+      return
+    }
+    var lines = stdout.split('\n')
+    process.env.shorthash = lines[0]
+    process.env.hash = lines[1]
+  })
+
   console.log('━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n')
   console.log('Following commands have been enabled: ')
   console.log(names.join(', '), '\n')
