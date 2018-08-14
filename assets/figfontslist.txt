@@ -1,0 +1,290 @@
+1Row
+3D-ASCII
+3D Diagonal
+3-D
+3x5
+4Max
+5 Line Oblique
+Acrobatic
+Alligator2
+Alligator
+Alphabet
+Alpha
+AMC 3 Line
+AMC 3 Liv1
+AMC AAA01
+AMC Neko
+AMC Razor2
+AMC Razor
+AMC Slash
+AMC Slider
+AMC Thin
+AMC Tubes
+AMC Untitled
+ANSI Shadow
+Arrows
+ASCII New Roman
+Avatar
+B1FF
+B1FF.php
+Banner3-D
+Banner3
+Banner4
+Banner
+Barbwire
+Basic
+Bear
+Bell
+Benjamin
+Big Chief
+Bigfig
+Big
+Big Money-ne
+Big Money-nw
+Big Money-se
+Big Money-sw
+Binary
+Block
+Blocks
+Bloody
+Bolger
+Braced
+Bright
+Broadway
+Broadway KB
+Bubble
+Bulbhead
+Caligraphy2
+Caligraphy
+Calvin S
+Cards
+Catwalk
+Chiseled
+Chunky
+Coinstak
+Cola
+Colossal
+Computer
+Contessa
+Contrast
+Cosmike
+Crawford2
+Crawford
+Crazy
+Cricket
+Cursive
+Cyberlarge
+Cybermedium
+Cybersmall
+Cygnet
+DANC4
+Dancing Font
+Decimal
+Def Leppard
+Delta Corps Priest 1
+Diamond
+Diet Cola
+Digital
+Doh
+Doom
+DOS Rebel
+Dot Matrix
+Double
+Double Shorts
+Dr Pepper
+DWhistled
+Efti Chess
+Efti Font
+Efti Italic
+Efti Piti
+Efti Robot
+Efti Wall
+Efti Water
+Electronic
+Elite
+Epic
+Fender
+figlist.txt
+Filter
+Fire Font-k
+Fire Font-s
+Flipped
+Flower Power
+Four Tops
+Fraktur
+Fun Face
+Fun Faces
+Fuzzy
+Georgi16
+Georgia11
+Ghost
+Ghoulish
+Glenyn
+Goofy
+Gothic
+Graceful
+Gradient
+Graffiti
+Greek
+Heart Left
+Heart Right
+Henry 3D
+Hex
+Hieroglyphs
+Hollywood
+Horizontal Left
+Horizontal Right
+ICL-1900
+Impossible
+Invita
+Isometric1
+Isometric2
+Isometric3
+Isometric4
+Italic
+Ivrit
+Jacky
+Jazmine
+Jerusalem
+JS Block Letters
+JS Bracket Letters
+JS Capital Curves
+JS Cursive
+JS Stick Letters
+Katakana
+Kban
+Keyboard
+Knob
+Konto
+Konto Slant
+Larry 3D 2
+Larry 3D
+LCD
+Lean
+Letters
+Lil Devil
+Line Blocks
+Linux
+Lockergnome
+Madrid
+Marquee
+Maxfour
+Merlin1
+Merlin2
+Mike
+Mini
+Mirror
+Mnemonic
+Modular
+Morse2
+Morse
+Moscow
+Mshebrew210
+Muzzle
+Nancyj-Fancy
+Nancyj
+Nancyj-Improved
+Nancyj-Underlined
+Nipples
+NScript
+NT Greek
+NV Script
+O8
+Octal
+Ogre
+Old Banner
+OS2
+Patorjk-HeX
+Patorjk's Cheese
+Pawp
+Peaks
+Peaks Slant
+Pebbles
+Pepper
+Poison
+Puffy
+Puzzle
+Pyramid
+Rammstein
+Rectangles
+Red Phoenix
+Relief2
+Relief
+Reverse
+Roman
+Rot13
+Rot13.php
+Rotated
+Rounded
+Rowan Cap
+Rozzo
+Runic
+Runyc
+Santa Clara
+S Blood
+Script
+Serifcap
+Shadow
+Shimrod
+Short
+Slant
+Slant Relief
+Slide
+SL Script
+Small Caps
+Small
+Small Isometric1
+Small Keyboard
+Small Poison
+Small Script
+Small Shadow
+Small Slant
+Small Tengwar
+Soft
+Speed
+Spliff
+Stacey
+Stampate
+Stampatello
+Standard
+Star Strips
+Star Wars
+Stellar
+Stforek
+Stick Letters
+Stop
+Straight
+Stronger Than All
+Sub-Zero
+Swamp Land
+Swan
+Sweet
+Tanja
+Tengwar
+Term
+Test1
+The Edge
+Thick
+Thin
+THIS
+Thorned
+Three Point
+Ticks
+Ticks Slant
+Tiles
+Tinker-Toy
+Tombstone
+Train
+Trek
+Tsalagi
+Tubular
+Twisted
+Two Point
+Univers
+USA Flag
+Varsity
+Wavy
+Weird
+Wet Letter
+Whimsy
+Wow
