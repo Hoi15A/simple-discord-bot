@@ -5,7 +5,8 @@ const info = {
   'name': 'ping',
   'permissionLevel': 'everyone',
   'colour': null,
-  'man': '`' + process.env.PREFIX + 'ping`\nReplies with `Pong!`'
+  'man': '`' + process.env.PREFIX + 'ping`\nReplies with `Pong!`',
+  'enabled': true
 }
 
 module.exports = {

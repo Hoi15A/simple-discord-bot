@@ -4,7 +4,8 @@ module.exports = {
   getInfo: function () {
     var info = {
       'name': 'eval',
-      'permissionLevel': 'owner'
+      'permissionLevel': 'owner',
+      'enabled': true
     }
     return info
   },

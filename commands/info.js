@@ -3,7 +3,8 @@ module.exports = {
     var info = {
       'name': 'info',
       'permissionLevel': 'everyone',
-      'man': '`' + process.env.PREFIX + 'info`\nProvides a bit of information on the bot'
+      'man': '`' + process.env.PREFIX + 'info`\nProvides a bit of information on the bot',
+      'enabled': true
     }
     return info
   },

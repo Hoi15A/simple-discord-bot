@@ -16,7 +16,8 @@ const info = {
   'name': 'pkfuse',
   'permissionLevel': 'everyone',
   'colour': null,
-  'man': 'Fuses 2 Pokémon\n`' + process.env.PREFIX + 'pkfuse <name/id> <name/id> <inputLang>`\n' + '`' + process.env.PREFIX + 'pkfuse random`\n' + '\n\n__**Input:**__\nNames or ids of two of the first 151 Pokémon and optionally an input language.\nYou can also just enter `random` to get a random fusion'
+  'man': 'Fuses 2 Pokémon\n`' + process.env.PREFIX + 'pkfuse <name/id> <name/id> <inputLang>`\n' + '`' + process.env.PREFIX + 'pkfuse random`\n' + '\n\n__**Input:**__\nNames or ids of two of the first 151 Pokémon and optionally an input language.\nYou can also just enter `random` to get a random fusion',
+  'enabled': true
 }
 
 module.exports = {

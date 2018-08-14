@@ -4,7 +4,8 @@ module.exports = {
   getInfo: function () {
     var info = {
       'name': 'bigtxt',
-      'permissionLevel': 'everyone'
+      'permissionLevel': 'everyone',
+      'enabled': true
     }
     return info
   },
