@@ -16,6 +16,7 @@
     "canvas": "2.0.0-alpha.12",
     "cheerio": "1.0.0-rc.2",
     "discord.js": "11.3.0",
+    "winston": "^3.0.0",
     "dotenv": "5.0.0",
     "figlet": "1.2.0",
     "pokemon": "1.2.3",
