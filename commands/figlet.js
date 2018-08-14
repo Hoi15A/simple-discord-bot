@@ -1,4 +1,6 @@
 const figlet = require('figlet')
+const fs = require('fs')
+const fonts = fs.readFileSync('./assets/figfontslist.txt').toString().split('\n')
 
 module.exports = {
   getInfo: function () {
@@ -22,7 +24,12 @@ module.exports = {
 
     var font = ''
     var args = require('yargs-parser')(params)
-    if (args.font !== undefined) {
+    if (args.r !== undefined) {
+      if (typeof args.r !== 'boolean') {
+        args._ = [args.r].concat(args._)
+      }
+      font = fonts[Math.floor(Math.random() * fonts.length)].trim()
+    } else if (args.font !== undefined) {
       font = args.font
     }
 
@@ -44,7 +51,7 @@ module.exports = {
       if (figText.length < 1990) {
         msg.channel.send('```\n' + figText + '```')
       } else {
-        msg.channel.send('Sorry, that message is too long to be sent. **[' + figText.length + '/2000]**')
+        msg.channel.send('Sorry, that message would exceed the max character limit. [' + figText.length + '/2000]')
       }
     })
   }
