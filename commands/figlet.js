@@ -1,5 +1,6 @@
 const figlet = require('figlet')
 const fs = require('fs')
+const fonts = fs.readFileSync('./assets/figfontslist.txt').toString().split('\n')
 
 module.exports = {
   getInfo: function () {
@@ -27,7 +28,6 @@ module.exports = {
       if (typeof args.r !== 'boolean') {
         args._ = [args.r].concat(args._)
       }
-      var fonts = fs.readFileSync('./assets/figfontslist.txt').toString().toLowerCase().split('\n')
       font = fonts[Math.floor(Math.random() * fonts.length)].trim()
     } else if (args.font !== undefined) {
       font = args.font
