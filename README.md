@@ -21,7 +21,7 @@ module.exports = {
     var info = {
       'name': 'your command name',
       'permissionLevel': 'everyone for everyone, admin for bot admins, owner for just yourself'
-      'enabled': true // if you want the command enabled
+      'enabled': true // if you want the command enabled, false if you don't
     }
     return info
   },
@@ -34,7 +34,7 @@ module.exports = {
 Make sure if you're making a command to only make it in the commands directory and not anywhere else
 
 ## Running the bot
-### Simple
+### Using node
 Just run `npm install` and start with `npm start`
 
 ### Using pm2
