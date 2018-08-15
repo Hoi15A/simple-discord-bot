@@ -3,16 +3,25 @@ if (process.env.REPO_BASE_URL === '' || process.env.REPO_BASE_URL === undefined)
   process.env.REPO_BASE_URL = 'https://github.com/Hoi15A/simple-discord-bot'
 }
 
+
+
 const fs = require('fs')
 const Discord = require('discord.js')
+const childProcess = require('child_process')
 const client = new Discord.Client()
-
 const permissions = require('./lib/permissions.js')
 
 // Create temp directory
 const dir = './tmp'
 if (!fs.existsSync(dir)) {
   fs.mkdirSync(dir)
+}
+
+if(!fs.existsSync('./logs')) {
+  fs.mkdirSync('./logs')
+  fs.mkdirSync('./logs/errors')
+  fs.mkdirSync('./logs/console')
+  fs.mkdirSync('./logs/exceptions')
 }
 
 var commands = []
@@ -30,6 +39,20 @@ client.on('ready', () => {
   commands.map(c => {
     names.push(c.info.name)
   })
+
+  childProcess.exec('git rev-parse --short HEAD && git rev-parse HEAD', function (err, stdout) {
+    if (err) {
+      console.log('Unable to fetch commit hash...')
+      console.error(err)
+      return
+    }
+
+    var lines = stdout.split('\n')
+    process.env.shorthash = lines[0]
+    process.env.hash = lines[1]
+  })
+
+
   console.log('━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n')
   console.log('Following commands have been enabled: ')
   console.log(names.join(', '), '\n')
@@ -62,6 +85,7 @@ client.on('message', msg => {
     }
   })
 
+
   if (cmd === 'help' || cmd === 'man') {
     if (params === 'help' || params === 'man') {
       msg.reply('you cute little idiot OwO\nYou aleady know how to use ' + cmd + '!')
@@ -71,6 +95,7 @@ client.on('message', msg => {
       '```\nUse them with: `' + process.env.PREFIX + '<command>`\nAnd use `' + process.env.PREFIX + 'help <command>` to get more information on a specific command.')
       return
     }
+
 
     for (var j = 0; j < commands.length; j++) {
       if (commands[j].info.name === params) {
@@ -87,5 +112,4 @@ client.on('message', msg => {
     msg.channel.send('The following commands are available:\n```\n' + names.join(', ') + '```')
   }
 })
-
 client.login(process.env.DISCORD_TOKEN)
