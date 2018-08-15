@@ -15,7 +15,7 @@ if (!fs.existsSync(dir)) {
   fs.mkdirSync(dir)
 }
 
-if(!fs.existsSync('./logs')) {
+if (!fs.existsSync('./logs')) {
   fs.mkdirSync('./logs')
   fs.mkdirSync('./logs/errors')
   fs.mkdirSync('./logs/console')
