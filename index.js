@@ -44,7 +44,6 @@ client.on('ready', () => {
       console.error(err)
       return
     }
-
     var lines = stdout.split('\n')
     process.env.shorthash = lines[0]
     process.env.hash = lines[1]
@@ -107,4 +106,5 @@ client.on('message', msg => {
     msg.channel.send('The following commands are available:\n```\n' + names.join(', ') + '```')
   }
 })
+
 client.login(process.env.DISCORD_TOKEN)
