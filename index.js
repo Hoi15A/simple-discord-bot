@@ -38,6 +38,18 @@ client.on('ready', () => {
     names.push(c.info.name)
   })
 
+  childProcess.exec('git rev-parse --short HEAD && git rev-parse HEAD', function (err, stdout) {
+    if (err) {
+      console.log('Unable to fetch commit hash...')
+      console.error(err)
+      return
+    }
+
+    var lines = stdout.split('\n')
+    process.env.shorthash = lines[0]
+    process.env.hash = lines[1]
+  })
+
   console.log('━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n')
   console.log('Following commands have been enabled: ')
   console.log(names.join(', '), '\n')
