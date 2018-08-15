@@ -3,8 +3,6 @@ if (process.env.REPO_BASE_URL === '' || process.env.REPO_BASE_URL === undefined)
   process.env.REPO_BASE_URL = 'https://github.com/Hoi15A/simple-discord-bot'
 }
 
-
-
 const fs = require('fs')
 const Discord = require('discord.js')
 const childProcess = require('child_process')
@@ -40,19 +38,6 @@ client.on('ready', () => {
     names.push(c.info.name)
   })
 
-  childProcess.exec('git rev-parse --short HEAD && git rev-parse HEAD', function (err, stdout) {
-    if (err) {
-      console.log('Unable to fetch commit hash...')
-      console.error(err)
-      return
-    }
-
-    var lines = stdout.split('\n')
-    process.env.shorthash = lines[0]
-    process.env.hash = lines[1]
-  })
-
-
   console.log('━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n')
   console.log('Following commands have been enabled: ')
   console.log(names.join(', '), '\n')
@@ -85,7 +70,6 @@ client.on('message', msg => {
     }
   })
 
-
   if (cmd === 'help' || cmd === 'man') {
     if (params === 'help' || params === 'man') {
       msg.reply('you cute little idiot OwO\nYou aleady know how to use ' + cmd + '!')
@@ -95,7 +79,6 @@ client.on('message', msg => {
       '```\nUse them with: `' + process.env.PREFIX + '<command>`\nAnd use `' + process.env.PREFIX + 'help <command>` to get more information on a specific command.')
       return
     }
-
 
     for (var j = 0; j < commands.length; j++) {
       if (commands[j].info.name === params) {
