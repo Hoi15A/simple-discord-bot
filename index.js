@@ -7,7 +7,6 @@ const fs = require('fs')
 const Discord = require('discord.js')
 const childProcess = require('child_process')
 const client = new Discord.Client()
-
 const permissions = require('./lib/permissions.js')
 
 // Create temp directory
