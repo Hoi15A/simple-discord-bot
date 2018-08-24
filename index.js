@@ -60,7 +60,11 @@ client.on('message', msg => {
   commands.map(command => {
     if (cmd === command.info.name) {
       if (permissions.check(msg.member, command.info.permissionLevel)) {
-        command.command(msg, params)
+        try {
+          command.command(msg, params)
+          console.log('Command '+ command.info.name + ' used by ' + message.author.name + ' (' + message.author.id + ') in ' + message.guild.name + ' (' + message.guild.id + ')')
+        } catch (err) {
+          console.log(err.stack)
       } else {
         msg.channel.send({
           'embed': {
@@ -98,6 +102,7 @@ client.on('message', msg => {
     msg.channel.send('It seems that there is no help available for: `' + params + '`\n')
   } else if (cmd === 'commands') {
     msg.channel.send('The following commands are available:\n```\n' + names.join(', ') + '```')
+    console.log('Command help used by ' + message.author.name + ' (' + message.author.id + ') in ' + message.guild.name + ' (' + message.guild.id + ')')
   }
 })
 
