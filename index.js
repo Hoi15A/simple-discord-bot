@@ -65,6 +65,7 @@ client.on('message', msg => {
           console.log('Command '+ command.info.name + ' used by ' + message.author.name + ' (' + message.author.id + ') in ' + message.guild.name + ' (' + message.guild.id + ')')
         } catch (err) {
           console.log(err.stack)
+        }
       } else {
         msg.channel.send({
           'embed': {
