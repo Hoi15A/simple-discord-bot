@@ -62,7 +62,7 @@ client.on('message', msg => {
       if (permissions.check(msg.member, command.info.permissionLevel)) {
         try {
           command.command(msg, params)
-          console.log('Command '+ command.info.name + ' used by ' + message.author.name + ' (' + message.author.id + ') in ' + message.guild.name + ' (' + message.guild.id + ')')
+          console.log('Command ' + command.info.name + ' used by ' + message.author.name + ' (' + message.author.id + ') in ' + message.guild.name + ' (' + message.guild.id + ')')
         } catch (err) {
           console.log(err.stack)
         }
