@@ -5,7 +5,8 @@ module.exports = {
     var info = {
       'name': 'aur',
       'permissionLevel': 'everyone',
-      'man': '`' + process.env.PREFIX + 'aur <search>` to search the Arch User Repository\nDisplays up to 8 results'
+      'man': '`' + process.env.PREFIX + 'aur <search>` to search the Arch User Repository\nDisplays up to 8 results',
+      'enabled': true
     }
     return info
   },

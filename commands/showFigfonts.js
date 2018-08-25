@@ -3,7 +3,8 @@ module.exports = {
     var info = {
       'name': 'figfonts',
       'permissionLevel': 'everyone',
-      'man': '`' + process.env.PREFIX + 'figfonts`\nLists figlet fonts'
+      'man': '`' + process.env.PREFIX + 'figfonts`\nLists figlet fonts',
+      'enabled': true
     }
     return info
   },

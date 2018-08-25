@@ -4,7 +4,8 @@ const info = {
   'name': 'rename',
   'permissionLevel': 'admin',
   'colour': '',
-  'man': 'Renames up to 10 random people on a server\nUse: ' + process.env.PREFIX + 'rename <number> <string>'
+  'man': 'Renames up to 10 random people on a server\nUse: ' + process.env.PREFIX + 'rename <number> <string>',
+  'enabled': true
 }
 
 module.exports = {

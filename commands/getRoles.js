@@ -4,7 +4,8 @@ const info = {
   'name': 'getroles',
   'permissionLevel': 'admin',
   'colour': '#3a7fc4',
-  'man': 'Returns a list of roles on the server'
+  'man': 'Returns a list of roles on the server',
+  'enabled': true
 }
 
 module.exports = {
