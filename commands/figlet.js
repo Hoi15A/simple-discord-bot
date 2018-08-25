@@ -51,6 +51,8 @@ module.exports = {
       var figText = data.replace(/^(?:[\t ]*(?:\r?\n|\r))+/gm, '')
       if (figText.length < 1990) {
         msg.channel.send('```\n' + figText + '```')
+      } else if (figText === '') {
+        msg.channel.send('Sorry, the text you inputted outputted empty')
       } else {
         msg.channel.send('Sorry, that message would exceed the max character limit. [' + figText.length + '/2000]')
       }
