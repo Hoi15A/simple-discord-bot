@@ -23,7 +23,7 @@ module.exports = {
       embed.author.icon_url = msg.author.avatarURL
       const date = new Date()
       embed.timestamp = date.toISOString()
-      m.edit({'embed': embed})
+      m.edit({ 'embed': embed })
     })
   }
 }

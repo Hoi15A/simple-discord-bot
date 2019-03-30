@@ -176,8 +176,8 @@ function getRandomBackdropCoords () {
   var backgrounds = backdrop.backgrounds
   var circles = backdrop.circles
 
-  var bg = {'x1': null, 'y1': null}
-  var circle = {'x1': null, 'y1': null}
+  var bg = { 'x1': null, 'y1': null }
+  var circle = { 'x1': null, 'y1': null }
 
   for (var i = 0; i < backgrounds.length; i++) {
     if (backgrounds[i].time === time) {
@@ -195,5 +195,5 @@ function getRandomBackdropCoords () {
     }
   }
 
-  return {'bg': bg, 'circle': circle}
+  return { 'bg': bg, 'circle': circle }
 }
