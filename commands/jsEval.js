@@ -3,7 +3,7 @@ module.exports = {
     var info = {
       'name': 'js',
       'permissionLevel': 'owner',
-      'enabled': true
+      'enabled': false
     }
     return info
   },

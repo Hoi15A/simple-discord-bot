@@ -180,4 +180,6 @@ client.on('message', msg => {
   }
 })
 
+client.on('error', console.error)
+
 client.login(process.env.DISCORD_TOKEN)

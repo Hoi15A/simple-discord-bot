@@ -48,7 +48,12 @@ module.exports = {
         console.log(err)
         return
       }
-      var figText = data.replace(/^(?:[\t ]*(?:\r?\n|\r))+/gm, '')
+      let figText = data.replace(/^(?:[\t ]*(?:\r?\n|\r))+/gm, '')
+      let trimmed = figText.trim()
+      if (trimmed.length === 0) {
+        msg.channel.send('No output from figlet, you probably only used characters figlet doesnt know')
+        return
+      }
       if (figText.length < 1990) {
         msg.channel.send('```\n' + figText + '```')
       } else {

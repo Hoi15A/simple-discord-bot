@@ -99,7 +99,7 @@ module.exports = {
 
       const canvas = createCanvas(backgroundSize[0], backgroundSize[1])
       const ctx = canvas.getContext('2d')
-      ctx.fillStyle = '#FF0000'
+      // ctx.fillStyle = '#FF0000'
       ctx.fillRect(0, 0, backgroundSize[0], backgroundSize[1])
 
       var fusePath = path.dirname(require.main.filename) + '/tmp/' + $('#pk_name').text() + '.png'
