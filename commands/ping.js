@@ -3,7 +3,7 @@ const send = require('../lib/messageSender.js')
 
 const info = {
   'name': 'ping',
-  'permissionLevel': 'everyone',
+  'requiredPermission': '',
   'colour': null,
   'man': '`' + process.env.PREFIX + 'ping`\nReplies with `Pong!`',
   'enabled': true

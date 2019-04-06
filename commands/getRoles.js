@@ -2,7 +2,7 @@ const send = require('../lib/messageSender.js')
 
 const info = {
   'name': 'getroles',
-  'permissionLevel': 'admin',
+  'requiredPermission': 'MANAGE_GUILD',
   'colour': '#3a7fc4',
   'man': 'Returns a list of roles on the server',
   'enabled': true

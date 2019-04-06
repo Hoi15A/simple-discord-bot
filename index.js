@@ -73,7 +73,7 @@ client.on('message', msg => {
   commands.map(command => {
     if (cmd === command.info.name) {
       if (!command.info.enabled) return
-      if (permissions.check(msg.member, command.info.permissionLevel)) {
+      if (permissions.check(msg.member, command.info.requiredPermission)) {
         command.command(msg, params)
       } else {
         msg.channel.send({
@@ -120,7 +120,7 @@ client.on('message', msg => {
       break
 
     case 'enable':
-      if (!permissions.check(msg.member, 'owner')) return
+      if (!permissions.check(msg.member, 'BOT_OWNER')) return
       command = commands.find((v) => v.info.name === params)
       if (command === undefined) {
         return send.standardResponse(msg, 'That command doesn\'t exist!', { name: 'enable command' })
@@ -136,7 +136,7 @@ client.on('message', msg => {
       break
 
     case 'disable':
-      if (!permissions.check(msg.member, 'owner')) return
+      if (!permissions.check(msg.member, 'BOT_OWNER')) return
       command = commands.find((v) => v.info.name === params)
       if (command === undefined) {
         return send.standardResponse(msg, 'That command doesn\'t exist!', { name: 'disable command' })
@@ -152,7 +152,7 @@ client.on('message', msg => {
       break
 
     case 'reload':
-      if (!permissions.check(msg.member, 'owner')) return
+      if (!permissions.check(msg.member, 'BOT_OWNER')) return
       var commandIndex = commands.findIndex((v) => v.info.name === params)
       if (commandIndex === -1) {
         return send.standardResponse(msg, 'That command doesn\'t exist!', { name: 'reload' })

@@ -6,7 +6,7 @@ module.exports = {
   getInfo: function () {
     var info = {
       'name': 'figlet',
-      'permissionLevel': 'everyone',
+      'requiredPermission': '',
       'man': '`' + process.env.PREFIX + 'figlet --font="<optional>" <text>`\nDisplays text with figlet (optionally with a specific font)\nFind a list of fonts with: `' + process.env.PREFIX + 'figfonts`',
       'enabled': true
     }

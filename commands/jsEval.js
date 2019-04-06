@@ -2,7 +2,7 @@ module.exports = {
   getInfo: function () {
     var info = {
       'name': 'js',
-      'permissionLevel': 'owner',
+      'requiredPermission': 'BOT_OWNER',
       'enabled': false
     }
     return info

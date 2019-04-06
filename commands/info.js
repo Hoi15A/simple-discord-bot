@@ -2,7 +2,7 @@ module.exports = {
   getInfo: function () {
     var info = {
       'name': 'info',
-      'permissionLevel': 'everyone',
+      'requiredPermission': '',
       'man': '`' + process.env.PREFIX + 'info`\nProvides a bit of information on the bot',
       'enabled': true
     }

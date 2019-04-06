@@ -2,7 +2,7 @@ const send = require('../lib/messageSender.js')
 
 const info = {
   'name': 'rename',
-  'permissionLevel': 'admin',
+  'requiredPermission': 'MANAGE_NICKNAMES',
   'colour': '',
   'man': 'Renames up to 10 random people on a server\nUse: ' + process.env.PREFIX + 'rename <number> <string>',
   'enabled': true
