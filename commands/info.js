@@ -1,10 +1,17 @@
+const format = require('../lib/format.js')
+
 module.exports = {
   getInfo: function () {
-    var info = {
+    let info = {
       'name': 'info',
       'requiredPermission': '',
-      'man': '`' + process.env.PREFIX + 'info`\nProvides a bit of information on the bot',
-      'enabled': true
+      'enabled': true,
+      'man': format.help(
+        'info',
+        'Returns some basic bot information like uptime and last commit hash',
+        `${process.env.PREFIX}info`,
+        []
+      )
     }
     return info
   },

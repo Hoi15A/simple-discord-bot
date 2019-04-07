@@ -104,6 +104,10 @@ client.on('message', msg => {
 
       for (var j = 0; j < commands.length; j++) {
         if (commands[j].info.name === params) {
+          if (!commands[j].info.enabled) {
+            msg.channel.send(`**${params}** is disabled!`)
+            return
+          }
           if (typeof commands[j].info.man === 'string') {
             msg.channel.send(commands[j].info.man, function (err) {
               console.log(err)

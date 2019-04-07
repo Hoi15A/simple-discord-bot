@@ -1,12 +1,18 @@
+const format = require('../lib/format.js')
 const request = require('request')
 
 module.exports = {
   getInfo: function () {
-    var info = {
+    let info = {
       'name': 'aur',
       'requiredPermission': '',
-      'man': '`' + process.env.PREFIX + 'aur <search>` to search the Arch User Repository\nDisplays up to 8 results',
-      'enabled': true
+      'enabled': true,
+      'man': format.help(
+        'aur',
+        'Command to search the Arch User Repository',
+        `${process.env.PREFIX}aur <search_term>`,
+        [`${process.env.PREFIX}aur discord`]
+      )
     }
     return info
   },

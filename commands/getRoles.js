@@ -1,11 +1,18 @@
+const format = require('../lib/format.js')
 const send = require('../lib/messageSender.js')
 
 const info = {
   'name': 'getroles',
   'requiredPermission': 'MANAGE_GUILD',
   'colour': '#3a7fc4',
-  'man': 'Returns a list of roles on the server',
-  'enabled': true
+  'enabled': true,
+  'man': format.help(
+    'getroles',
+    'Returns a list of all roles in this guild',
+    `${process.env.PREFIX}getroles`,
+    [],
+    'MANAGE_GUILD'
+  )
 }
 
 module.exports = {

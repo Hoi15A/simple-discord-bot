@@ -1,11 +1,23 @@
+const format = require('../lib/format.js')
 const childProcess = require('child_process')
 
 module.exports = {
   getInfo: function () {
-    var info = {
+    let info = {
       'name': 'eval',
       'requiredPermission': 'BOT_OWNER',
-      'enabled': false
+      'enabled': false,
+      'man': format.help(
+        'eval',
+        'Runs any shell command passed',
+        `${process.env.PREFIX}eval <string>`,
+        [
+          `${process.env.PREFIX}eval ls`,
+          `${process.env.PREFIX}eval echo hello world`,
+          `${process.env.PREFIX}eval cd commands; cat eval.js`
+        ],
+        'BOT_OWNER'
+      )
     }
     return info
   },

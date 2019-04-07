@@ -1,3 +1,4 @@
+const format = require('../lib/format.js')
 const send = require('../lib/messageSender.js')
 const fs = require('fs')
 const path = require('path')
@@ -16,8 +17,19 @@ const info = {
   'name': 'pkfuse',
   'requiredPermission': '',
   'colour': null,
-  'man': 'Fuses 2 Pokémon\n`' + process.env.PREFIX + 'pkfuse <name/id> <name/id> <inputLang>`\n' + '`' + process.env.PREFIX + 'pkfuse random`\n' + '\n\n__**Input:**__\nNames or ids of two of the first 151 Pokémon and optionally an input language.\nYou can also just enter `random` to get a random fusion',
-  'enabled': true
+  'enabled': true,
+  'man': format.help(
+    'pkfuse',
+    'Fuses two Gen 1 Pokémon\n(No, hitmonlee and kingler sadly doesnt give you what you think)',
+    `${process.env.PREFIX}pkfuse <name/id> <name/id> {nameLanguage}`,
+    [
+      `${process.env.PREFIX}pkfuse 124 100`,
+      `${process.env.PREFIX}pkfuse 3 mew`,
+      `${process.env.PREFIX}pkfuse bisasam glurak de`,
+      `${process.env.PREFIX}pkfuse random`
+    ]
+  )
+  // 'man': 'Fuses 2 Pokémon\n`' + process.env.PREFIX + 'pkfuse <name/id> <name/id> <inputLang>`\n' + '`' + process.env.PREFIX + 'pkfuse random`\n' + '\n\n__**Input:**__\nNames or ids of two of the first 151 Pokémon and optionally an input language.\nYou can also just enter `random` to get a random fusion',
 }
 
 module.exports = {

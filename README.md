@@ -12,7 +12,6 @@ PREFIX=<prefix for bot commands>
 REPO_BASE_URL=https://github.com/Hoi15A/simple-discord-bot
 EMBED_COLOUR=<hex colour code>
 BOT_OWNERS=<user Id's>
-BOT_ADMIN_ROLES=<role Id's>
 ```
 You can enter multiple values for owner and admin roles, separate them with `,`
 ### Running the bot
@@ -42,14 +41,21 @@ Then simply run `npm run docker-build` to create the image (can be used to recre
 ## Adding your own commands
 Adding commands is actually very easy, they all follow a structure similar to this:
 ```js
+const format = require('../lib/format.js')
 const send = require('../lib/messageSender.js') // includes a few handy functions that automatically format responses nicely
 
 const info = {
   'name': 'getroles', // the name of the command and how it is called (in this example its ""<prefix>getroles")
-  'permissionLevel': 'admin', // everyone for everyone, admin for bot admins, owner for just yourself
+  'requiredPermission': '', // either BOT_OWNER, a discord permission string or empty for everyone
   'colour': '#3a7fc4', // colour for embeds sent by this command. If not set the default from the .env is used
-  'man': 'Returns a list of roles on the server', // manual for the command, returned by the help and man commands
-  'enabled': true // if you want the command enabled by default, false if you don't
+  'enabled': true, // if you want the command enabled by default, false if you don't
+  'man': format.help( // information printed by the help command
+    'getroles', // command title
+    'Returns a list of all roles in this guild', // description
+    `${process.env.PREFIX}getroles`, // use
+    [], // examples
+    'MANAGE_GUILD' // required permission if any
+  )
 }
 
 module.exports = {
@@ -58,7 +64,7 @@ module.exports = {
   },
   command: function (msg, params) {
     // you can do whatever you like here, this is just the getroles command as an example
-    var allRoles = []
+    let allRoles = []
     msg.guild.roles.map(role => {
       allRoles.push(role.name + ': ' + role.id)
     })

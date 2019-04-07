@@ -1,14 +1,25 @@
+const format = require('../lib/format.js')
 const figlet = require('figlet')
 const fs = require('fs')
 const fonts = fs.readFileSync('./assets/figfontslist.txt').toString().split('\n')
 
 module.exports = {
   getInfo: function () {
-    var info = {
+    let info = {
       'name': 'figlet',
       'requiredPermission': '',
-      'man': '`' + process.env.PREFIX + 'figlet --font="<optional>" <text>`\nDisplays text with figlet (optionally with a specific font)\nFind a list of fonts with: `' + process.env.PREFIX + 'figfonts`',
-      'enabled': true
+      'enabled': true,
+      'man': format.help(
+        'figlet',
+        'Turns any text into even bigger text\nYou can also optionally tell it what font to use\nTo see a list of fonts, pass \'--listfonts\'',
+        `${process.env.PREFIX}figlet --font '{font}' <string>`,
+        [
+          `${process.env.PREFIX}figlet this is huge`,
+          `${process.env.PREFIX}figlet --font 'Doh' BIGGER`,
+          `${process.env.PREFIX}figlet -r Random font`,
+          `${process.env.PREFIX}figlet --listfonts`
+        ]
+      )
     }
     return info
   },
@@ -25,6 +36,10 @@ module.exports = {
 
     var font = ''
     var args = require('yargs-parser')(params)
+    if (args.listfonts) {
+      msg.channel.send('https://pastebin.com/g723fkZa')
+      return
+    }
     if (args.r !== undefined) {
       if (typeof args.r !== 'boolean') {
         args._ = [args.r].concat(args._)

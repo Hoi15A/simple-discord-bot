@@ -1,12 +1,18 @@
 const clocks = require('../lib/clocks.json')
+const format = require('../lib/format.js')
 const send = require('../lib/messageSender.js')
 
 const info = {
   'name': 'ping',
   'requiredPermission': '',
   'colour': null,
-  'man': '`' + process.env.PREFIX + 'ping`\nReplies with `Pong!`',
-  'enabled': true
+  'enabled': true,
+  'man': format.help(
+    'ping',
+    `Generic Ping command #${(Math.floor(Math.random() * 999) + 1).toString()}`,
+    `${process.env.PREFIX}ping`,
+    []
+  )
 }
 
 module.exports = {

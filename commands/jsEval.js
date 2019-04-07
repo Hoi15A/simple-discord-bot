@@ -1,9 +1,22 @@
+const format = require('../lib/format.js')
+
 module.exports = {
   getInfo: function () {
-    var info = {
+    let info = {
       'name': 'js',
       'requiredPermission': 'BOT_OWNER',
-      'enabled': false
+      'enabled': false,
+      'man': format.help(
+        'js',
+        'Runs js code with eval()',
+        `${process.env.PREFIX}js <string>`,
+        [
+          `${process.env.PREFIX}js 2+2`,
+          `${process.env.PREFIX}js 'NA'.repeat(8) + ' BATMAN!'`,
+          `${process.env.PREFIX}js msg.author.username`
+        ],
+        'BOT_OWNER'
+      )
     }
     return info
   },
@@ -31,5 +44,5 @@ module.exports = {
 }
 
 function escapeQuotes (text) {
-  return text.replace(/`/g, '\\`')
+  return text.toString().replace(/`/g, '\\`')
 }

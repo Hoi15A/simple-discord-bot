@@ -1,9 +1,16 @@
+const format = require('../lib/format.js')
+
 module.exports = {
   getInfo: function () {
-    var info = {
+    let info = {
       'name': 'invite',
       'requiredPermission': '',
-      'man': '`' + process.env.PREFIX + 'invite`\nDisplays the bot\'s invite'
+      'man': format.help(
+        'invite',
+        'Returns the invite to add this bot to a guild',
+        `${process.env.PREFIX}invite`,
+        []
+      )
     }
     return info
   },

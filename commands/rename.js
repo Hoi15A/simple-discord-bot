@@ -1,11 +1,22 @@
+const format = require('../lib/format.js')
 const send = require('../lib/messageSender.js')
 
 const info = {
   'name': 'rename',
   'requiredPermission': 'MANAGE_NICKNAMES',
   'colour': '',
-  'man': 'Renames up to 10 random people on a server\nUse: ' + process.env.PREFIX + 'rename <number> <string>',
-  'enabled': true
+  'enabled': true,
+  'man': format.help(
+    'rename',
+    'Renames up to 50 random people to anything of your chosing',
+    `${process.env.PREFIX}rename <number> <new_name>`,
+    [
+      `${process.env.PREFIX}rename 1 austin is awesome`,
+      `${process.env.PREFIX}rename 23 owo`,
+      `${process.env.PREFIX}rename 50 ya boi`
+    ],
+    'MANAGE_NICKNAMES'
+  )
 }
 
 module.exports = {
@@ -25,8 +36,8 @@ module.exports = {
     }
     var newName = params.replace(amount, '').trim()
     var keys = []
-    if (amount > 10) {
-      send.standardResponse(msg, 'You can only rename up to 10 people', info)
+    if (amount > 50) {
+      send.standardResponse(msg, 'You can only rename up to 50 people', info)
       return
     } else if (newName.length > 32 || newName.length < 1) {
       send.standardResponse(msg, 'Your new name does not fit within 1-32 characters!\n**' + newName.length + '/32 Characters**', info)

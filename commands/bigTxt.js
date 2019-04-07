@@ -1,11 +1,21 @@
 const alphabet = require('../lib/alphabetMap.json')
+const format = require('../lib/format.js')
 
 module.exports = {
   getInfo: function () {
-    var info = {
+    let info = {
       'name': 'bigtxt',
       'requiredPermission': '',
-      'enabled': true
+      'enabled': true,
+      'man': format.help(
+        'bigtxt',
+        'Converts text to regional indicators',
+        `${process.env.PREFIX}bigtxt <string>`,
+        [
+          `${process.env.PREFIX}bigtxt hello`,
+          `${process.env.PREFIX}bigtxt owo whats this`
+        ]
+      )
     }
     return info
   },
