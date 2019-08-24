@@ -8,6 +8,7 @@ This is to keep the code consistent throughout the enitre repo. PR's that don't 
 - Avoid adding new dependencies whenever possible
 
 <hr>
+
 ## Quick Checks
 ### Guidelines
 - [ ] Standardjs is used
