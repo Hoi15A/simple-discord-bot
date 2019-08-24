@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
-    "test": "node ./node_modules/standard/bin/cmd.js",
+    "test": "npx eslint .",
     "docker-build": "docker-compose build && docker-compose down && docker-compose up -d",
     "docker-up": "docker-compose up -d",
     "docker-down": "docker-compose down"
@@ -27,5 +27,7 @@
     "type": "git",
     "url": "https://github.com/Hoi15A/simple-discord-bot.git"
   },
-  "devDependencies": {}
+  "devDependencies": {
+    "eslint": "^6.2.2"
+  }
 }
