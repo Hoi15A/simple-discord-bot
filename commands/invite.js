@@ -14,7 +14,7 @@ module.exports = {
     }
     return info
   },
-  command: function (msg, params) {
+  command: function (msg) {
     var inviteEmbed = {
       'embed': {
         'title': 'Invite the bot',

@@ -19,7 +19,7 @@ module.exports = {
   getInfo: function () {
     return info
   },
-  command: function (msg, params) {
+  command: function (msg) {
     var allRoles = []
     msg.guild.roles.map(role => {
       allRoles.push(role.name + ': ' + role.id)

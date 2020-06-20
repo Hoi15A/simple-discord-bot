@@ -19,7 +19,7 @@ module.exports = {
   getInfo: function () {
     return info
   },
-  command: function (msg, params) {
+  command: function (msg) {
     const timeThen = Date.now()
     send.standardResponse(msg, '_Measuring..._', info).then(m => {
       const latency = Date.now() - timeThen

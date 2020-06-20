@@ -15,7 +15,7 @@ module.exports = {
     }
     return info
   },
-  command: function (msg, params) {
+  command: function (msg) {
     var uptimeSeconds = msg.client.uptime / 1000
     var days = Math.floor(uptimeSeconds / 86400)
     uptimeSeconds %= 86400

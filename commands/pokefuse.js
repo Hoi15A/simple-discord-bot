@@ -153,7 +153,7 @@ module.exports = {
             const stream = canvas.createPNGStream()
             stream.pipe(out)
             out.on('finish', () => {
-              send.sendImage(msg, info, resultPath, caption, true, resultFilename).then(resp => {
+              send.sendImage(msg, info, resultPath, caption, true, resultFilename).then(() => {
                 fs.unlink(fusePath, (err) => {
                   if (err) {
                     console.error(err)
